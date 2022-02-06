@@ -89,14 +89,22 @@ def CreateSaveFile():
 CreateSaveFile()
 
 # WIP
+#working on proper file save format for easier read to store in variable skills
 def SaveSkills():
     file = open("Test.txt", "w")
     for i in skills:
-        for j in i:
-            file.write(str(j) + " ")
+        file.write(str(i).replace("[", "").replace("'", "").replace("]", ","))
     file.close()
 
 #need to also load skills by reading from file
+
+#trying to read data from file and import to skills
+def LoadSkills():
+    file = open("Test.txt", "r")
+    for line in file.readlines():
+        print(line.split(","))
+    file.close()
+LoadSkills()
 
 def PrintSkills():
     ClearTerminal()
