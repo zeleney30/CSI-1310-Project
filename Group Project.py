@@ -14,6 +14,8 @@ import random
 # dexterity - weapon type/level? hit chance?
 #endurance - extra turn? rate you lose mana/energy
 #energy required to attack?
+#special ability? choice at the beginning btw a selcect amount of specific abilities (extra health, extra strength, extra agility, etc)
+#assign name to player/character?
 
 
 
@@ -23,6 +25,8 @@ import random
 #key inputs to access other menus
 #shops
 #items
+#weapons
+#health bar/lives
 #enemies
 #levels
 #finish skills
@@ -33,6 +37,8 @@ def PrintMenu():
     print("Enter 'S' to view your skill points")
     print("Enter 'T' to talk to the trader")
     print("Enter 'D' to enter the dungeon")
+    print("Enter 'X' to close the menu.")
+    print("Enter 'Z' to close the game.")
 
     key = input("")
     
@@ -55,6 +61,14 @@ def PrintMenu():
         for i in traderInventory:
             print(i)
 
+    if key == 'X':
+        #close the PrintMenu
+        print("Closing menu...")
+
+    if key == "Z":
+        #close the game
+        print("Closing game...")
+
 # PLAYER STATS #
 level = 1
 xp = 0
@@ -70,6 +84,7 @@ sp = 5
 #max level = 25
 
 skills = [["1 - Strength: ", 0], ["2 - Dexterity: ", 0], ["3 - Intelligence: ", 0], ["4 - Agility: ", 0], ["5 - Stamina: ", 0]]
+specialAbility = [["1 - Strength: ", 0], ["2 - Dexterity: ", 0], ["3 - Intelligence: ", 0], ["4 - Agility: ", 0], ["5 - Stamina: ", 0]]
 
 #Only works in terminal, not IDLE shell
 def ClearTerminal():
@@ -99,6 +114,7 @@ def SaveSkills():
 #need to also load skills by reading from file
 
 #trying to read data from file and import to skills
+#also add for special ability that player chose if we decide to add this
 def LoadSkills():
     file = open("Test.txt", "r")
     for line in file.readlines():
@@ -170,12 +186,20 @@ helmet = ""
 chestplate = ""
 gaunlets = ""
 pants = ""
+consumable = ""
 
+#possible weapon types: wooden sword, iron sword, copper sword, diamond sword
+#possible helmet types: none, wooden helmet, iron helmet, copper helmet, diamond helmet
+#possible chesplate types: none, wooden chestplate, iron chestplate, copper chestplate, diamond chestplate
+#possible gauntlet types: ????
+#possible pant types: ????
+#possible consumables: ????
 
 # DUNGEON #
 
 #Enemy types
-enemies = [["Goblin", 15, 5], ["Zombie", 22, 9], ["Skeleton", 30, 12]]
+enemies = [["Goblin", 15, 5], ["Zombie", 22, 9], ["Skeleton", 30, 12]] #find a way to automaticall increase difficulty based on level, skills, and armor
+#example: if total health > 15, zombies start spawning. if total health > 25, skeletons start spawning
 
 # END DUNGEON #
 
@@ -190,11 +214,11 @@ enemies = [["Goblin", 15, 5], ["Zombie", 22, 9], ["Skeleton", 30, 12]]
 traderInventory = []
 
 def GenerateRandomItem():
-    items = ["Weapon", "Helmet", "Chestplate", "Gauntlet", "Pants", "Consumable"]
+    items = ["Weapon", "Helmet", "Chestplate", "Gauntlet", "Pants", "Consumable"] #only allow random items that are none or wooden for weapon, helmet, chestplate, and pants -- make gauntlet and consumables similar 
     item = random.choice(items)
     return item
     
-def GenerateTraderInv():
+def GenerateTraderInv(): #trader can have any items that are listed above, chooses 1 or 2 randomly from each list? or we can show them all
     global traderInventory
     while len(traderInventory) < 10:
         traderInventory.append(GenerateRandomItem())
