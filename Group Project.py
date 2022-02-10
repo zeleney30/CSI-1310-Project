@@ -1,7 +1,7 @@
 from os import system, name
 from os.path import exists
+import os
 from time import sleep
-import array as array
 import random
 
 
@@ -29,6 +29,8 @@ import random
 #inventory
 #save data/progress
 
+
+
 def PrintMenu():
     print("Enter 'S' to view your skill points")
     print("Enter 'T' to talk to the trader")
@@ -55,6 +57,8 @@ def PrintMenu():
         for i in traderInventory:
             print(i)
 
+
+
 # PLAYER STATS #
 level = 1
 xp = 0
@@ -70,6 +74,10 @@ sp = 5
 #max level = 25
 
 skills = [["1 - Strength: ", 0], ["2 - Dexterity: ", 0], ["3 - Intelligence: ", 0], ["4 - Agility: ", 0], ["5 - Stamina: ", 0]]
+
+
+
+# GENERIC FUNCTIONS #
 
 #Only works in terminal, not IDLE shell
 def ClearTerminal():
@@ -93,17 +101,50 @@ CreateSaveFile()
 def SaveSkills():
     file = open("Test.txt", "w")
     for i in skills:
-        file.write(str(i).replace("[", "").replace("'", "").replace("]", ","))
+        for k in i:
+            file.write(str(k) + "\n")
     file.close()
 
 #need to also load skills by reading from file
 
 #trying to read data from file and import to skills
 def LoadSkills():
+    if not os.path.getsize("Test.txt") > 0:
+        return
+    
+    global skills
+    
     file = open("Test.txt", "r")
-    for line in file.readlines():
-        print(line.split(","))
+    
+    list1 = []
+    list2 = []
+
+    i = 0
+
+    while True:
+        i += 1
+
+        line = file.readline()
+
+        if not line:
+            break
+
+        if (i % 2) == 1:
+            list1.insert(i, line.strip() + " ")
+        else:
+            list2.insert(i, int(line.strip()))
+    
     file.close()
+
+    list3 = []
+
+    j = 0
+
+    while j < len(list1):
+        list3.insert(j, [list1[j], list2[j]])
+        j += 1
+
+    skills = list3        
 LoadSkills()
 
 def PrintSkills():
@@ -132,6 +173,8 @@ def UpgradeSkills():
                 PrintSkills()
 
 # END SKILL POINTS #
+
+
 
 # SKILL EFFECTS #
 
@@ -162,6 +205,8 @@ Calc_Dodge()
 
 # END SKILL EFFECTS #
 
+
+
 #holds items and consumables
 inventory = []
 
@@ -178,6 +223,8 @@ pants = ""
 enemies = [["Goblin", 15, 5], ["Zombie", 22, 9], ["Skeleton", 30, 12]]
 
 # END DUNGEON #
+
+
 
 # TRADER #
 
@@ -200,6 +247,8 @@ def GenerateTraderInv():
         traderInventory.append(GenerateRandomItem())
 
 # END TRADER #
+
+
 
 # GAME LOGIC #
 
