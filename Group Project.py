@@ -32,6 +32,8 @@ import random
 #finish skills
 #inventory
 #save data/progress
+#player death
+#semi perma death -> lose a few random items and some gold in the inventory upon death -> allow equipped items?
 
 menu=[]
 menu['1'] = "Continue Game"
@@ -108,7 +110,7 @@ sp = 5
 #max level = 25
 
 skills = [["1 - Strength: ", 0], ["2 - Dexterity: ", 0], ["3 - Intelligence: ", 0], ["4 - Agility: ", 0], ["5 - Stamina: ", 0]]
-specialAbility = [["1 - Strength: ", 0], ["2 - Dexterity: ", 0], ["3 - Intelligence: ", 0], ["4 - Agility: ", 0], ["5 - Stamina: ", 0]]
+specialAbility = [["1 - Strength: ", 0], ["2 - Dexterity: ", 0], ["3 - Intelligence: ", 0], ["4 - Agility: ", 0], ["5 - Stamina: ", 0]] #have player chosen class determine special ability not skills? his is a better and easier option imo
 
 
 
@@ -121,18 +123,21 @@ def ClearTerminal():
     else:
         _ = system("clear")
         
-# insert method to show skills on request -> we could keep this as the 'S' key: only open while not in combat
+# insert method to show skills on request -> we could keep this as the 'S' key: only open while not in combat -> yes do this
 # if keypress then show skill tree
 # only allow skill tree while out of combat/in menus
 
+# SKILL POINTS #
+
+# If the save file doesnt exist, create it #
+# Should we use one file to store all the data? it might get messy
 def CreateSaveFile():
     if not exists("Test.txt"):
         file = open("Test.txt", "x")
         file.close()
 CreateSaveFile()
 
-# WIP
-#working on proper file save format for easier read to store in variable skills
+# Save skills to file #
 def SaveSkills():
     file = open("Test.txt", "w")
     for i in skills:
@@ -140,10 +145,10 @@ def SaveSkills():
             file.write(str(k) + "\n")
     file.close()
 
-#need to also load skills by reading from file
 
-#trying to read data from file and import to skills
+# Load skills data from file #
 #also add for special ability that player chose if we decide to add this
+#and class ^
 def LoadSkills():
     if not os.path.getsize("Test.txt") > 0:
         return
@@ -183,6 +188,7 @@ def LoadSkills():
     skills = list3        
 LoadSkills()
 
+# Print skills to terminal #
 def PrintSkills():
     ClearTerminal()
     for i in skills:
@@ -191,6 +197,7 @@ def PrintSkills():
         print()
     print("Available skill points: ", sp)
 
+# Upgrade skill aspect and save to file #
 def UpgradeSkills():
     global sp
     
@@ -253,18 +260,23 @@ gaunlets = [""]
 pants = ["None", "Regular Pants", "Armored Pants", "Armored Pants+"]
 consumable = ["Healing Potion", "Strength Potion", "Mana Potion", "Intelligence Potion", "Dexterity Potion", "Agility Potion", "Stamina Potion"]
 
+#different clothing based on class? like robes and staffs for mages and swords and steel armor for knight?
+
 #possible weapon types: wooden sword, iron sword, copper sword, diamond sword
 #possible helmet types: none, wooden helmet, iron helmet, copper helmet, diamond helmet
 #possible chesplate types: none, wooden chestplate, iron chestplate, copper chestplate, diamond chestplate
 #possible gauntlet types: ???? --> what are we defining as a gauntlet? like a rare item that greatly increases one ability?
+#gauntlet is an armored glove. we dont have to add it if we dont want /s
 #possible pant types: ????
-#possible consumables: ????
+#possible consumables: ???? -> health potion, mana potion, etc. other potions/food or something to effect stats like "eat this and you gain dodge for 3 turns"
 
 # DUNGEON #
 
 #Enemy types
 enemies = [["Grunt", 10, 3], ["Goblin", 15, 5], ["Zombie", 22, 9], ["Skeleton", 30, 12], ["Wizard", 40, 16]] #find a way to automatically increase difficulty based on level, skills, and armor
 #example: if player max health > 15, zombies start spawning. if max health > 25, skeletons start spawning, etc
+#scale enemy health and damage upon player level, similar to how player health is calculated based on skill points, etc
+#enemy health and damage values are just base values, they will be slightly randomized +/- for diverse enemies and possible difficulty increases
 
 # END DUNGEON #
 
@@ -272,12 +284,12 @@ enemies = [["Grunt", 10, 3], ["Goblin", 15, 5], ["Zombie", 22, 9], ["Skeleton", 
 
 # TRADER #
 
-#trader resets every XX minutes?
+#trader resets every XX minutes? 15? 5?
 #need to save trader inventory to file so it is not refreshed every time the player enters the trader
 
 #inventory needs to be randomized
-#should trader sell at least one of each equipment at any given time? --> player should have option to decline buying anything
-#ability to sell to trader? --> only if it isnt a pain in the ass
+#should trader sell at least one of each equipment at any given time? --> player should have option to decline buying anything -> yes, if the player doesnt like the options they can leave the trader
+#ability to sell to trader? --> only if it isnt a pain in the ass -> agreed but shouldnt be hard
 traderInventory = []
 
 def GenerateRandomItem():
@@ -285,7 +297,7 @@ def GenerateRandomItem():
     item = random.choice(items)
     return item
     
-def GenerateTraderInv(): #trader can have any items that are listed above, chooses 1 or 2 randomly from each list? or we can show them all
+def GenerateTraderInv(): #trader can have any items that are listed above, chooses 1 or 2 randomly from each list? or we can show them all -> can generate like 5 random items and just display them. items need to be generated based on player level so we dont generate a level 25 item for a level 1 player
     global traderInventory
     while len(traderInventory) < 10:
         traderInventory.append(GenerateRandomItem())
