@@ -241,7 +241,7 @@ consumable = ""
 # DUNGEON #
 
 #Enemy types
-enemies = [["Goblin", 15, 5], ["Zombie", 22, 9], ["Skeleton", 30, 12]] #find a way to automaticall increase difficulty based on level, skills, and armor
+enemies = [["Goblin", 15, 5], ["Zombie", 22, 9], ["Skeleton", 30, 12]] #find a way to automatically increase difficulty based on level, skills, and armor
 #example: if total health > 15, zombies start spawning. if total health > 25, skeletons start spawning
 
 # END DUNGEON #
