@@ -32,7 +32,33 @@ import random
 #finish skills
 #inventory
 #save data/progress
+#player death
+#semi perma death -> lose a few random items and some gold in the inventory upon death -> allow equipped items?
 
+menu=[]
+menu['1'] = "Continue Game"
+menu['2'] = "Save Game"
+menu['3'] = "Quit Game"
+while True:
+    options = menu.keys()
+    options.sort()
+    for entry in options:
+        print(entry, menu[entry])
+
+    selection=input("Please select one of the following options: ")
+    if selection == '1':
+        #start the game
+        print("Loading game...")
+    elif selection == '2':
+        #write save to file
+        print("Saving game...")
+    elif selection == '3':
+        #close the game -- ask player to make sure they saved first!
+        print("Closing game...")
+        break
+    else:
+        print("Please select a valid option.")
+        #open the menu again so they can choose a valid option
 
 
 def PrintMenu():
@@ -41,6 +67,7 @@ def PrintMenu():
     print("Enter 'D' to enter the dungeon")
     print("Enter 'X' to close the menu.")
     print("Enter 'Z' to close the game.")
+
 
     key = input("")
     
@@ -58,7 +85,7 @@ def PrintMenu():
     if key == "T":
         #enter trader
         #load trader inventory from file
-        #after x time, refresh with new items
+        #after x time, refresh with new items -- 15 minutes? 5 minutes?
         GenerateTraderInv()
         for i in traderInventory:
             print(i)
@@ -99,18 +126,21 @@ def ClearTerminal():
     else:
         _ = system("clear")
         
-# insert method to show skills on request
+# insert method to show skills on request -> we could keep this as the 'S' key: only open while not in combat -> yes do this
 # if keypress then show skill tree
 # only allow skill tree while out of combat/in menus
 
+# SKILL POINTS #
+
+# If the save file doesnt exist, create it #
+# Should we use one file to store all the data? it might get messy
 def CreateSaveFile():
     if not exists("Test.txt"):
         file = open("Test.txt", "x")
         file.close()
 CreateSaveFile()
 
-# WIP
-#working on proper file save format for easier read to store in variable skills
+# Save skills to file #
 def SaveSkills():
     file = open("Test.txt", "w")
     for i in skills:
@@ -118,7 +148,6 @@ def SaveSkills():
             file.write(str(k) + "\n")
     file.close()
 
-#need to also load skills by reading from file
 
 #trying to read data from file and import to skills
 #also add for special ability that player chose if we decide to add this
@@ -161,6 +190,7 @@ def LoadSkills():
     skills = list3        
 LoadSkills()
 
+# Print skills to terminal #
 def PrintSkills():
     ClearTerminal()
     for i in skills:
@@ -169,6 +199,7 @@ def PrintSkills():
         print()
     print("Available skill points: ", sp)
 
+# Upgrade skill aspect and save to file #
 def UpgradeSkills():
     global sp
     
@@ -234,14 +265,14 @@ consumable = ""
 #possible weapon types: wooden sword, iron sword, copper sword, diamond sword
 #possible helmet types: none, wooden helmet, iron helmet, copper helmet, diamond helmet
 #possible chesplate types: none, wooden chestplate, iron chestplate, copper chestplate, diamond chestplate
-#possible gauntlet types: ????
-#possible pant types: ????
+#possible gauntlet types: none, padded gauntlet, armored gauntlet, armored gauntlet +
+#possible pant types: none, padded pantss, armored pants, armored pants +
 #possible consumables: ????
 
 # DUNGEON #
 
 #Enemy types
-enemies = [["Goblin", 15, 5], ["Zombie", 22, 9], ["Skeleton", 30, 12]] #find a way to automaticall increase difficulty based on level, skills, and armor
+enemies = [["Grunt", 10, 2], ["Goblin", 15, 5], ["Zombie", 22, 9], ["Skeleton", 30, 12], ["Wizard", 42, 19]] #find a way to automaticall increase difficulty based on level, skills, and armor
 #example: if total health > 15, zombies start spawning. if total health > 25, skeletons start spawning
 
 # END DUNGEON #
@@ -250,18 +281,23 @@ enemies = [["Goblin", 15, 5], ["Zombie", 22, 9], ["Skeleton", 30, 12]] #find a w
 
 # TRADER #
 
-#trader resets every 15 minutes?
+#trader resets every XX minutes? 15? 5?
 #need to save trader inventory to file so it is not refreshed every time the player enters the trader
 
 #inventory needs to be randomized
-#should trader sell at least one of each equipment at any given time?
-#ability to sell to trader?
-traderInventory = []
+#should trader sell at least one of each equipment at any given time? --> player should have option to decline buying anything -> yes, if the player doesnt like the options they can leave the trader
+#ability to sell to trader? --> only if it isnt a pain in the ass -> agreed but shouldnt be hard
+traderHelmets = ["None", "Wooden Helmet", "Iron Helmet", "Copper Helmet", "Diamond Helmet"]
+traderChestplates = ["None", "Wooden Chestplate", "Iron Chestplate", "Copper Chestplate", "Diamond Chestplate"]
+traderGauntlets = ["None", "Padded Gauntlet", "Armored Gauntlet", "Armored Gauntlet +"]
+traderPants = ["None", "Padded Pants", "Armored Pants", "Armored Pants +"]
+traderConsumables = [""]
+traderInventory = [""] #randomly generate trader inventory from above lists
 
 def GenerateRandomItem():
     items = ["Weapon", "Helmet", "Chestplate", "Gauntlet", "Pants", "Consumable"] #only allow random items that are none or wooden for weapon, helmet, chestplate, and pants -- make gauntlet and consumables similar 
-    item = random.choice(items)
-    return item
+    items = random.choices(items, k=2)
+    return items
     
 def GenerateTraderInv(): #trader can have any items that are listed above, chooses 1 or 2 randomly from each list? or we can show them all
     global traderInventory
