@@ -5,6 +5,9 @@ from time import sleep
 import random
 
 
+
+
+
 # Ideas
 
 #skills effect combat
@@ -36,24 +39,25 @@ import random
 #semi perma death -> lose a few random items and some gold in the inventory upon death -> allow equipped items?
 #define main() so we can organize and call functions as they are needed
 
-menu=[] #open automatically on game startup
-menu['1'] = "Continue Game"
-menu['2'] = "Save Game"
-menu['3'] = "Quit Game"
+menu=[1, 2, 3] #open automatically on game startup
+menu[1] = "Continue Game"
+menu[2] = "Save Game"
+menu[3] = "Quit Game"
 while True:
     options = menu.keys()
     options.sort()
     for entry in options:
         print(entry, menu[entry])
+        f=open("PythonGame.txt", 'r')
 
     selection=input("Please select one of the following options: ")
-    if selection == '1':
+    if selection == 1 :
         #start the game
         print("Loading game...")
-    elif selection == '2':
+    elif selection == 2 :
         #write save to file
         print("Saving game...")
-    elif selection == '3':
+    elif selection == 3 :
         #close the game -- ask player to make sure they saved first!
         print("Closing game...")
         break
@@ -297,13 +301,18 @@ traderInventory = [""] #randomly generate trader inventory from above lists
 
 def GenerateRandomItem():
     items = ["Weapon", "Helmet", "Chestplate", "Gauntlet", "Pants", "Consumable"] #only allow random items that are none or wooden for weapon, helmet, chestplate, and pants -- make gauntlet and consumables similar 
-    items = random.choices(items, k=2)
+    items = random.choice(traderHelmets, k=2) + random.choice(traderChestplates, k=2) + random.choice(traderGauntlets, k=2) + random.choice(traderPants, k=2)
     return items
     
-def GenerateTraderInv(): #trader can have any items that are listed above, chooses 1 or 2 randomly from each list? or we can show them all
+def GenerateTraderInv(): #generates 2 of each item for the trader to have available to buy
     global traderInventory
+    traderInventory = random.choice(traderHelmets, k=2) + random.choice(traderChestplates, k=2) + random.choice(traderGauntlets, k=2) + random.choice(traderPants, k=2)
     while len(traderInventory) < 10:
         traderInventory.append(GenerateRandomItem())
+        return traderInventory
+    else:
+        traderInventory = random.choice(traderHelmets, k=2) + random.choice(traderChestplates, k=2) + random.choice(traderGauntlets, k=2) + random.choice(traderPants, k=2)
+        return traderInventory
 
 # END TRADER #
 
