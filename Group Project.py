@@ -34,8 +34,9 @@ import random
 #save data/progress
 #player death
 #semi perma death -> lose a few random items and some gold in the inventory upon death -> allow equipped items?
+#define main() so we can organize and call functions as they are needed
 
-menu=[]
+menu=[] #open automatically on game startup
 menu['1'] = "Continue Game"
 menu['2'] = "Save Game"
 menu['3'] = "Quit Game"
