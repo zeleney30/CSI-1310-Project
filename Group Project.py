@@ -3,27 +3,15 @@ from os.path import exists
 import os
 from time import sleep
 import random
-
-
-
-
+from breezypythongui import EasyFrame
 
 # Ideas
 
-#skills effect combat
-#strength - damage  & health?
-# agility - dodge
-# intelligence - abilities/magic?
-# dexterity - weapon type/level? hit chance?
-#endurance - extra turn? rate you lose mana/energy
-#energy required to attack?
-#special ability? choice at the beginning btw a selcect amount of specific abilities (extra health, extra strength, extra agility, etc)
-#assign name to player/character?
-
+#maybe make this simpler that we originally planned?
+#possibly do a single combat level to demonstrate using breezypythongui
 
 
 #TO DO
-
 #main menu
 #key inputs to access other menus
 #shops
@@ -39,72 +27,67 @@ import random
 #semi perma death -> lose a few random items and some gold in the inventory upon death -> allow equipped items?
 #define main() so we can organize and call functions as they are needed
 
-<<<<<<< Updated upstream
-menu=[0,1,2] #open automatically on game startup
-menu[0] = "Continue Game"
-menu[1] = "Save Game"
-menu[2] = "Quit Game"
-=======
-menu=[1, 2, 3] #open automatically on game startup
-menu[1] = "Continue Game"
-menu[2] = "Save Game"
-menu[3] = "Quit Game"
->>>>>>> Stashed changes
+menu={'A': '- Continue Game', 'B': '- New Game', 'C':'- Save Game', 'D':'- Quit Game'} #open automatically on game startup
+
 while True:
     options = menu.keys()
-    options.sort()
     for entry in options:
         print(entry, menu[entry])
-        f=open("PythonGame.txt", 'r')
+        f = open("PythonGame.txt", 'w+')
+        f.close()
+        #write save data
+        
 
     selection=input("Please select one of the following options: ")
-<<<<<<< Updated upstream
-    if selection == 0 :
-        #start the game
+    if selection == 'A' or selection == 'a':
+        #load previous game
         print("Loading game...")
-    elif selection == 1 :
-        #write save to file
+        break
+    elif selection == 'B' or selection == 'b':
+        #start new game
+        f = open("Pythongame.txt", 'w+')
+        f.truncate()
+        f.close()
+        print("Starting new game...")
+        break
+    elif selection == 'C' or selection == 'c':
+        #save the game
         print("Saving game...")
-    elif selection == 2 :
-=======
-    if selection == 1 :
-        #start the game
-        print("Loading game...")
-    elif selection == 2 :
-        #write save to file
-        print("Saving game...")
-    elif selection == 3 :
->>>>>>> Stashed changes
-        #close the game -- ask player to make sure they saved first!
+        break
+    elif selection == 'D' or selection == 'd':
+        #close the game -- autosave before closing
         print("Closing game...")
         break
+        quit()
+        
     else:
         print("Please select a valid option.")
         #open the menu again so they can choose a valid option
 
 
 def PrintMenu():
-    print("Enter 'S' to view your skill points")
-    print("Enter 'T' to talk to the trader")
-    print("Enter 'D' to enter the dungeon")
-    print("Enter 'X' to close the menu.")
-    print("Enter 'Z' to close the game.")
+    if selection == 'A' or selection == 'a' or selection == 'B' or selection == 'b':
+        print("Enter 'S' to view your skill points")
+        print("Enter 'T' to talk to the trader")
+        print("Enter 'D' to enter the dungeon")
+        print("Enter 'X' to close the menu.")
+        print("Enter 'Z' to close the game.")
 
 
     key = input("")
     
-    if key == "S":
+    if key == "S" or key == "s":
         PrintSkills()
         if sp > 0:
             print("Enter 'U' to spend skill points")
             key = input("")
-            if key == "U":
+            if key == "U" or key == "u":
                 UpgradeSkills()
                 
-    if key == "D":
+    if key == "D" or key == "d":
         print("Dungeon")
         #enter dungeon
-    if key == "T":
+    if key == "T" or key == "t":
         #enter trader
         #load trader inventory from file
         #after x time, refresh with new items -- 15 minutes? 5 minutes?
@@ -112,13 +95,14 @@ def PrintMenu():
         for i in traderInventory:
             print(i)
 
-    if key == 'X':
+    if key == 'X' or key == 'x':
         #close the PrintMenu
         print("Closing menu...")
 
-    if key == "Z":
+    if key == 'Z' or key == 'z':
         #close the game
         print("Closing game...")
+        quit()
 
 # PLAYER STATS #
 level = 1
@@ -129,13 +113,15 @@ hc = 0.75
 dc = 0.05
 
 # SKILL POINTS #
-sp = 5
+sp = 5  #this automatically gives the player 5 more skill points every time the game runs, we need to make this not happen
+
 
 #need to implement max level
 #max level = 25
 
 skills = [["1 - Strength: ", 0], ["2 - Dexterity: ", 0], ["3 - Intelligence: ", 0], ["4 - Agility: ", 0], ["5 - Stamina: ", 0]]
 specialAbility = [["1 - Strength: ", 0], ["2 - Dexterity: ", 0], ["3 - Intelligence: ", 0], ["4 - Agility: ", 0], ["5 - Stamina: ", 0]]
+
 
 
 
@@ -155,7 +141,7 @@ def ClearTerminal():
 # SKILL POINTS #
 
 # If the save file doesnt exist, create it #
-# Should we use one file to store all the data? it might get messy
+# Should we use one file to store all the data? it might get messy -> ask professor??
 def CreateSaveFile():
     if not exists("Test.txt"):
         file = open("Test.txt", "x")
@@ -227,7 +213,7 @@ def UpgradeSkills():
     
     while sp > 0:
         upgrade = input("Skill to upgrade: ")
-        if upgrade == "E":
+        if upgrade == "E" or upgrade == 'e':
             PrintMenu()
             break
         else:
@@ -284,6 +270,12 @@ gaunlets = ""
 pants = ""
 consumable = ""
 
+def PrintInventory():
+    print("Press 'I' to view your inventory.")
+    if key == 'I' or key == 'i':
+        print(inventory)
+        
+
 #possible weapon types: wooden sword, iron sword, copper sword, diamond sword
 #possible helmet types: none, wooden helmet, iron helmet, copper helmet, diamond helmet
 #possible chesplate types: none, wooden chestplate, iron chestplate, copper chestplate, diamond chestplate
@@ -295,6 +287,10 @@ consumable = ""
 
 #Enemy types
 enemies = [["Grunt", 10, 2], ["Goblin", 15, 5], ["Zombie", 22, 9], ["Skeleton", 30, 12], ["Wizard", 42, 19]] #find a way to automaticall increase difficulty based on level, skills, and armor
+enemy = "Grunt"
+
+
+
 #example: if total health > 15, zombies start spawning. if total health > 25, skeletons start spawning
 
 # END DUNGEON #
@@ -338,3 +334,6 @@ def GenerateTraderInv(): #generates 2 of each item for the trader to have availa
 # GAME LOGIC #
 
 PrintMenu()
+
+
+
