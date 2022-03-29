@@ -39,10 +39,17 @@ import random
 #semi perma death -> lose a few random items and some gold in the inventory upon death -> allow equipped items?
 #define main() so we can organize and call functions as they are needed
 
+<<<<<<< Updated upstream
 menu=[0,1,2] #open automatically on game startup
 menu[0] = "Continue Game"
 menu[1] = "Save Game"
 menu[2] = "Quit Game"
+=======
+menu=[1, 2, 3] #open automatically on game startup
+menu[1] = "Continue Game"
+menu[2] = "Save Game"
+menu[3] = "Quit Game"
+>>>>>>> Stashed changes
 while True:
     options = menu.keys()
     options.sort()
@@ -51,6 +58,7 @@ while True:
         f=open("PythonGame.txt", 'r')
 
     selection=input("Please select one of the following options: ")
+<<<<<<< Updated upstream
     if selection == 0 :
         #start the game
         print("Loading game...")
@@ -58,6 +66,15 @@ while True:
         #write save to file
         print("Saving game...")
     elif selection == 2 :
+=======
+    if selection == 1 :
+        #start the game
+        print("Loading game...")
+    elif selection == 2 :
+        #write save to file
+        print("Saving game...")
+    elif selection == 3 :
+>>>>>>> Stashed changes
         #close the game -- ask player to make sure they saved first!
         print("Closing game...")
         break
