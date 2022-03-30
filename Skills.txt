@@ -1,11 +1,11 @@
 1 - Strength: 
-69
+1
 2 - Dexterity: 
-5
-3 - Intelligence: 
-1
-4 - Agility: 
-1
-5 - Stamina: 
-7
 0
+3 - Intelligence: 
+0
+4 - Agility: 
+0
+5 - Stamina: 
+1
+3

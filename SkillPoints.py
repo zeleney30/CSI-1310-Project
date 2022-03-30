@@ -11,7 +11,7 @@ skills = [["1 - Strength: ", 0], ["2 - Dexterity: ", 0], ["3 - Intelligence: ", 
 def getSP():
     return sp
 
-def setSP(x)
+def setSP(x):
     sp = x
 
 #Create the save file if it doesnt already exist
