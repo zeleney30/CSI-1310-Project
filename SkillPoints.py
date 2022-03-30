@@ -4,23 +4,25 @@ import os
 
 import GameFunctions as Game
 
-
+#Initialize skill variables (If there is no save file then this is a new game, use these values)
 sp = 5
 skills = [["1 - Strength: ", 0], ["2 - Dexterity: ", 0], ["3 - Intelligence: ", 0], ["4 - Agility: ", 0], ["5 - Stamina: ", 0]]
 
 def getSP():
     return sp
 
+def setSP(x)
+    sp = x
+
 #Create the save file if it doesnt already exist
 def CreateSaveFile():
-    if not exists("Test.txt"):
-        file = open("Test.txt", "x")
+    if not exists("Skills.txt"):
+        file = open("Skills.txt", "x")
         file.close()
-CreateSaveFile()
 
 #Save skills
-def SaveSkills():
-    file = open("Test.txt", "w")
+def Save():
+    file = open("Skills.txt", "w")
     for i in skills:
         for k in i:
             file.write(str(k) + "\n")
@@ -29,14 +31,14 @@ def SaveSkills():
     file.close()
 
 #Load skills
-def LoadSkills():
-    if not os.path.getsize("Test.txt") > 0:
+def Load():
+    if not os.path.getsize("Skills.txt") > 0:
         return
     
     global skills
     global sp
     
-    file = open("Test.txt", "r")
+    file = open("Skills.txt", "r")
     
     list1 = []
     list2 = []
@@ -110,6 +112,6 @@ def UpgradeSkills():
             if (upgrade >= 0 & upgrade <= 5):
                 skills[upgrade][1] += 1
                 sp -= 1
-                SaveSkills()
+                Save()
                 PrintSkills()
     
