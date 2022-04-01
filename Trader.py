@@ -3,6 +3,9 @@ from os.path import exists
 import os
 import random
 
+import GameFunctions as Game
+import Player as Player
+
 #trader resets every XX minutes? 15? 5?
 
 #need to add gp value associated with each item
@@ -10,11 +13,11 @@ import random
 #inventory needs to be randomized
 #should trader sell at least one of each equipment at any given time? --> player should have option to decline buying anything -> yes, if the player doesnt like the options they can leave the trader
 #ability to sell to trader? --> only if it isnt a pain in the ass -> agreed but shouldnt be hard
-traderWeapons = ["Wooden Sword", "Iron Sword", "Copper Sword", "Diamond Sword"]
-traderHelmets = ["Wooden Helmet", "Iron Helmet", "Copper Helmet", "Diamond Helmet"]
-traderChestplates = ["Wooden Chestplate", "Iron Chestplate", "Copper Chestplate", "Diamond Chestplate"]
-traderGauntlets = ["Padded Gauntlet", "Steel Gauntlet"]
-traderPants = ["Padded Pants", "Iron Pants"]
+traderWeapons =     ["Tin Sword", "Copper Sword", "Steel Sword"]
+traderHelmets =     ["Tin Helmet", "Copper Helmet", "Steel Helmet"]
+traderChestplates = ["Tin Chestplate", "Copper Chestplate", "Steel Chestplate"]
+traderGauntlets =   ["Tin Gauntlet", "Copper Gauntlet", "Steel Gauntlet"]
+traderPants =       ["Tin Pants", "Copper Pants", "Steel Pants"]
 traderConsumables = ["Health Potion", "Mana Potion", "Food"]
 traderInventory = [] #randomly generated trader inventory from above lists
 
@@ -54,6 +57,54 @@ def Load():
         traderInventory.insert(i, line.strip())
 
     file.close()
+
+
+
+def calcPrice(item):
+    tier = -1
+    gp = -1
+
+    if "Tin" in item:
+        tier = 1
+    elif "Copper" in item:
+        tier = 2
+    elif "Steel" in item:
+        tier = 3
+
+    gp = random.randint(10 * (tier * tier), 20 * (tier * tier))
+
+    return gp
+
+
+
+def PrintTrader():
+    Game.ClearTerminal()
+
+    count = 1
+    
+    for i in getInventory():
+        print(count, " - ", i)
+        count += 1
+
+    print("Press 'P' to purchase an item")
+
+    key = input("")
+
+    if (key == "P"):
+        PurchaseItem()
+
+def PurchaseItem():
+    print("Item to purchase: ")
+
+    key = input("")
+
+    item = traderInventory[int(key) - 1]
+
+    price = calcPrice(item)
+
+    if (Player.getGP() >= price)
+        Player.setGP(Player.getGP() - price)
+        Player.inventory.append(item)
 
 
 

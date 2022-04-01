@@ -1,5 +1,5 @@
 1 - Strength: 
-1
+4
 2 - Dexterity: 
 0
 3 - Intelligence: 
@@ -8,4 +8,4 @@
 0
 5 - Stamina: 
 1
-3
+0

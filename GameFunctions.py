@@ -1,6 +1,7 @@
 from os import system, name
 
 import SkillPoints as Skills
+import Trader as Trader
 
 #Only works in terminal, not IDLE shell
 def ClearTerminal():
@@ -71,9 +72,8 @@ def PrintMenu():
         #enter trader
         #load trader inventory from file
         #after x time, refresh with new items -- 15 minutes? 5 minutes?
-        GenerateTraderInv()
-        for i in traderInventory:
-            print(i)
+        Trader.GenerateTraderInv()
+        Trader.PrintTrader()
 
     if key == 'X' or key == 'x':
         #close the PrintMenu

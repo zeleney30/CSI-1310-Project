@@ -10,6 +10,7 @@ dc = 0.05
 #need to implement max level
 #max level = 25
 
+gp = 0
 
 #holds items and consumables
 inventory = []
@@ -29,6 +30,16 @@ def PrintInventory():
     print("Press 'I' to view your inventory.")
     if key == 'I' or key == 'i':
         print(inventory)
+
+
+
+def getGP():
+    return gp
+
+def setGP(x):
+    gp = x
+
+
 
 def Calc_Health():
     global hp

@@ -1,10 +1,10 @@
-Padded Gauntlet
-Food
-Padded Pants
-Iron Pants
-Wooden Helmet
+Tin Chestplate
+Steel Chestplate
+Copper Pants
+Tin Sword
+Copper Gauntlet
+Copper Gauntlet
+Tin Chestplate
+Copper Helmet
 Mana Potion
-Iron Sword
-Iron Chestplate
-Padded Gauntlet
-Health Potion
+Steel Gauntlet
