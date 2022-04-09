@@ -1,3 +1,6 @@
+import SkillPoints as Skills
+import GameFunctions as Game
+
 # PLAYER STATS #
 level = 1
 xp = 0
@@ -26,8 +29,11 @@ consumable = ""
 #need to add endurance somehow
 #need to make intelligence effect magic damage
 
+
+
 def PrintInventory():
     print("Press 'I' to view your inventory.")
+    key = input('')
     if key == 'I' or key == 'i':
         print(inventory)
 
@@ -43,16 +49,16 @@ def setGP(x):
 
 def Calc_Health():
     global hp
-    hp = hp + (skills[0][1] * 2)
+    hp = hp + (Skills[0][1] * 2)
 
 def Calc_Mana():
     global mana
-    mana = mana + (skills[2][1] * 2)
+    mana = mana + (Skills[2][1] * 2)
 
 def Calc_HitChance():
     global hc
-    hc = hc + (skills[1][1] / 100)
+    hc = hc + (Skills[1][1] / 100)
 
 def Calc_Dodge():
     global dc
-    dc = dc + (skills[3][1] / 100)
+    dc = dc + (Skills[3][1] / 100)

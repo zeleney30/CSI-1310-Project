@@ -81,10 +81,6 @@ Calc_Dodge()'''
 #attack success chance
 #evasion chance? or just use player hit chance?
 
-#current format: ["enemy name", health, damage] being 100% hit chance and 0% evasion chance
-enemies = [["Grunt", 10, 2], ["Goblin", 15, 5], ["Zombie", 22, 9], ["Skeleton", 30, 12], ["Wizard", 42, 19]] #find a way to automaticall increase difficulty based on level, skills, and armor
-enemy = "Grunt"
-
 
 
 #example: if total health > 15, zombies start spawning. if total health > 25, skeletons start spawning

@@ -2,6 +2,7 @@ from os import system, name
 from os.path import exists
 import os
 import random
+from re import A
 
 import GameFunctions as Game
 import Player as Player
@@ -13,7 +14,7 @@ import Player as Player
 #inventory needs to be randomized
 #should trader sell at least one of each equipment at any given time? --> player should have option to decline buying anything -> yes, if the player doesnt like the options they can leave the trader
 #ability to sell to trader? --> only if it isnt a pain in the ass -> agreed but shouldnt be hard
-traderWeapons =     ["Tin Sword", "Copper Sword", "Steel Sword"]
+traderWeapons =     ["Tin Sword", "Copper Sword", "Steel Sword"]        #need prices for all the trader items
 traderHelmets =     ["Tin Helmet", "Copper Helmet", "Steel Helmet"]
 traderChestplates = ["Tin Chestplate", "Copper Chestplate", "Steel Chestplate"]
 traderGauntlets =   ["Tin Gauntlet", "Copper Gauntlet", "Steel Gauntlet"]
@@ -61,8 +62,9 @@ def Load():
 
 
 def calcPrice(item):
-    tier = -1
-    gp = -1
+    item = ['']
+    tier = 0
+    gp = 0
 
     if "Tin" in item:
         tier = 1
@@ -86,23 +88,28 @@ def PrintTrader():
         print(count, " - ", i)
         count += 1
 
-    print("Press 'P' to purchase an item")
+    print("Press 'P' to purchase an item.")
+    key = input('')
 
-    key = input("")
 
-    if (key == "P"):
+    if (key == "P" or key == 'p'):
         PurchaseItem()
+    else:
+        print("Please select a valid option.")
 
 def PurchaseItem():
-    print("Item to purchase: ")
 
-    key = input("")
+    price = 0 #calcPrice(item)
+
+    key=input("Item to purchase: ")
+    print("This item costs " + str(price) + " gold.")
+
 
     item = traderInventory[int(key) - 1]
 
-    price = calcPrice(item)
+    
 
-    if (Player.getGP() >= price)
+    if (Player.getGP() >= price):
         Player.setGP(Player.getGP() - price)
         Player.inventory.append(item)
 
