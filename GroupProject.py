@@ -1,7 +1,5 @@
-
-
-import SkillPoints as Skills
 import GameFunctions as Game
+import Player as Player
 
 
 
@@ -36,7 +34,6 @@ import GameFunctions as Game
 
 
 # GAME LOGIC #
-
 Game.PrintMenu()
 
 
