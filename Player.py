@@ -3,6 +3,7 @@ import GameFunctions as Game
 
 # PLAYER STATS #
 level = 1
+dmg = 1
 xp = 0
 hp = 100
 mana = 100
@@ -25,9 +26,6 @@ gaunlets = ""
 pants = ""
 consumable = ""
 
-#need to calculate damage
-#need to add endurance somehow
-#need to make intelligence effect magic damage
 
 
 

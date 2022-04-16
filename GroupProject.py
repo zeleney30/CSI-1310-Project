@@ -1,35 +1,17 @@
-#from breezypythongui import EasyFrame
+
 
 import SkillPoints as Skills
 import GameFunctions as Game
 
-# Ideas
 
-#maybe make this simpler that we originally planned?
-#possibly do a single combat level to demonstrate using breezypythongui
+
 
 
 #TO DO
-#main menu
-#key inputs to access other menus
-#trader
-#items
-#weapons
-#health bar/lives
-#enemies
-#levels
-#finish skills effects
-#inventory
-#save data/progress
-#player death
-#semi perma death -> lose a few random items and some gold in the inventory upon death -> allow equipped items?
+#finish dungeon
+#simplify trader
 
-#possible weapon types: wooden sword, iron sword, copper sword, diamond sword
-#possible helmet types: none, wooden helmet, iron helmet, copper helmet, diamond helmet
-#possible chesplate types: none, wooden chestplate, iron chestplate, copper chestplate, diamond chestplate
-#possible gauntlet types: none, padded gauntlet, armored gauntlet, armored gauntlet +
-#possible pant types: none, padded pantss, armored pants, armored pants +
-#possible consumables: health potions, mana potions, food
+
 
 
 
@@ -37,53 +19,10 @@ import GameFunctions as Game
 
 
         
-# insert method to show skills on request -> we could keep this as the 'S' key: only open while not in combat -> yes do this
-# if keypress then show skill tree
-# only allow skill tree while out of combat/in menus
-
-
-
-# SKILL POINTS #
-
-#specialAbility = [["1 - Strength: ", 0], ["2 - Dexterity: ", 0], ["3 - Intelligence: ", 0], ["4 - Agility: ", 0], ["5 - Stamina: ", 0]]
-
-Skills.CreateSaveFile()
-
-Skills.Load()
-
-
-
-# END SKILL POINTS #
-
-
-
-# SKILL EFFECTS #
-
-
-
-'''Calc_Health()
-Calc_Mana()
-Calc_HitChance()
-Calc_Dodge()'''
-
-
-
-# END SKILL EFFECTS #
-
-        
 
 # DUNGEON #
+#single enemy
 
-#Enemy types
-#Each enemy needs:
-#health
-#attack dmg
-#attack success chance
-#evasion chance? or just use player hit chance?
-
-
-
-#example: if total health > 15, zombies start spawning. if total health > 25, skeletons start spawning
 
 # END DUNGEON #
 
