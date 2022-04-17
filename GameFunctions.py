@@ -1,9 +1,8 @@
 from os import system, name
-from re import A
-from this import d
 
 import SkillPoints as Skills
 import Trader as Trader
+import Player as Player
 import Dungeon as Dungeon
 
 #Only works in terminal, not IDLE shell
@@ -20,6 +19,7 @@ def PrintMenu():
     if selection == 'A' or selection == 'a' or selection == 'B' or selection == 'b': #main menu for game, can be opened at tny time
         print("Enter 'S' to view your skill points")
         print("Enter 'T' to talk to the trader")
+        print("Enter 'I' to view your inventory")
         print("Enter 'D' to enter the dungeon")
         print("Enter 'X' to close the menu.")
         print("Enter 'Z' to close the game.")
@@ -89,6 +89,11 @@ while True:
         #after x time, refresh with new items -- 15 minutes? 5 minutes?
         Trader.GenerateTraderInv()
         Trader.PrintTrader()
+
+    if key == 'I' or key == 'i':
+        #Open inventory
+        print("Opening inventory...")
+        Player.OpenInventory()
 
     if key == 'X' or key == 'x':
         #close the PrintMenu

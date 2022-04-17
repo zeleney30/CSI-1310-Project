@@ -59,10 +59,9 @@ def Load():
 
 
 
-def calcPrice(item): #calculate item prices
-    item = ['']
-    tier = 0
-    gp = 0
+def calcPrice(item):
+    tier = -1
+    gp = -1
 
     if "Tin" in item:
         tier = 1
@@ -96,20 +95,19 @@ def PrintTrader():
         print("Please select a valid option.")
 
 def PurchaseItem():
-
-    price = 0 #calcPrice(item)
-
     key=input("Item to purchase: ")
-    print("This item costs " + str(price) + " gold.")
-
 
     item = traderInventory[int(key) - 1]
 
-    
+    price = calcPrice(item)
 
     if (Player.getGP() >= price):
         Player.setGP(Player.getGP() - price)
         Player.inventory.append(item)
+        Player.Save()
+        print("Item purchased for " + str(price) + " gold!")
+    else:
+        print("You do not have enough gold!")
 
 
 
@@ -130,7 +128,8 @@ def GenerateRandomItem():
     elif (itemType == "Pants"):
         item = random.choice(traderPants)
     elif (itemType == "Consumable"):
-        item = random.choice(traderConsumables)
+        #item = random.choice(traderConsumables)
+        item = GenerateRandomItem()
     
     return item
 
