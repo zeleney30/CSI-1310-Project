@@ -7,14 +7,12 @@ from re import A
 import GameFunctions as Game
 import Player as Player
 
-#trader resets every XX minutes? 15? 5?
 
 #need to add gp value associated with each item
 
 #inventory needs to be randomized
-#should trader sell at least one of each equipment at any given time? --> player should have option to decline buying anything -> yes, if the player doesnt like the options they can leave the trader
-#ability to sell to trader? --> only if it isnt a pain in the ass -> agreed but shouldnt be hard
-traderWeapons =     ["Tin Sword", "Copper Sword", "Steel Sword"]        #need prices for all the trader items
+#if the player doesnt like the options they can leave the trader, not required to buy anything
+traderWeapons =     ["Tin Sword", "Copper Sword", "Steel Sword"]
 traderHelmets =     ["Tin Helmet", "Copper Helmet", "Steel Helmet"]
 traderChestplates = ["Tin Chestplate", "Copper Chestplate", "Steel Chestplate"]
 traderGauntlets =   ["Tin Gauntlet", "Copper Gauntlet", "Steel Gauntlet"]
@@ -61,7 +59,7 @@ def Load():
 
 
 
-def calcPrice(item):
+def calcPrice(item): #calculate item prices
     item = ['']
     tier = 0
     gp = 0

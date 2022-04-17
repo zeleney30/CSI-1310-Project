@@ -11,9 +11,6 @@ hc = 0.75
 dc = 0.05
 
 
-#need to implement max level
-#max level = 25
-
 gp = 0
 
 #holds items and consumables
@@ -29,7 +26,7 @@ consumable = ""
 
 
 
-def PrintInventory():
+def PrintInventory(): #print the player inventory
     print("Press 'I' to view your inventory.")
     key = input('')
     if key == 'I' or key == 'i':

@@ -12,7 +12,7 @@ import GameFunctions as Game
 
 #current format: ["enemy name", health, damage] being 100% hit chance and 0% evasion chance
 enemies = [["Grunt", 10, 2], ["Goblin", 15, 5], ["Zombie", 22, 9], ["Skeleton", 30, 12], ["Wizard", 42, 19]] #find a way to automatically increase difficulty based on level, skills, and armor
-enemy = "Grunt"
+enemy = "Grunt" #only working enemy at this time -> makes it simpler for presentation purposes
 
 
 dunOptions = {'1': 'Fight', '2': 'Use Consumable', '3': 'Flee'}

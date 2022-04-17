@@ -17,7 +17,7 @@ menu={'A': '- Continue Game', 'B': '- New Game', 'C':'- Save Game', 'D':'- Quit 
 
 
 def PrintMenu():
-    if selection == 'A' or selection == 'a' or selection == 'B' or selection == 'b':
+    if selection == 'A' or selection == 'a' or selection == 'B' or selection == 'b': #main menu for game, can be opened at tny time
         print("Enter 'S' to view your skill points")
         print("Enter 'T' to talk to the trader")
         print("Enter 'D' to enter the dungeon")

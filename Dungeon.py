@@ -7,7 +7,7 @@ import Player as Player
 import Enemies as Enemies
 import GameFunctions as Game
 
-def EnterDungeon():
+def EnterDungeon(): #starts a fight sequence that will run in enemies 
     print("Entering dungeon...")
     Enemies.GenerateEnemy()
 
