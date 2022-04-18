@@ -13,6 +13,7 @@ def playerSkills():
     print(skills, "Skills: ")
     print(sp, "Your remaining skill points: ")
 
+
 def getSP():
     return sp
 
