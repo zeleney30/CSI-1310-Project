@@ -14,7 +14,7 @@ dc = 0.05
 #need to implement max level
 #max level = 25
 
-gp = 100000
+gp = 100
 
 #holds items and consumables
 inventory = []

@@ -5,11 +5,8 @@ import os
 import GameFunctions as Game
 
 #Initialize skill variables (If there is no save file then this is a new game, use these values)
-def playerSkills():
-    sp = 5
-    skills = [["1 - Strength: ", 0], ["2 - Dexterity: ", 0], ["3 - Intelligence: ", 0], ["4 - Agility: ", 0], ["5 - Stamina: ", 0]]
-    print(skills, "Skills: ")
-    print(sp, "Your remaining skill points: ")
+sp = 5
+skills = [["1 - Strength: ", 0], ["2 - Dexterity: ", 0], ["3 - Intelligence: ", 0], ["4 - Agility: ", 0], ["5 - Stamina: ", 0]]
 
 
 def getSP():
