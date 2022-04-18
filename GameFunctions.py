@@ -1,6 +1,6 @@
 from os import system, name
 
-import SkillPoints as Skills
+import SkillPoints
 import Trader as Trader
 import Player as Player
 import Dungeon as Dungeon
@@ -71,7 +71,7 @@ while True:
     if key == "S" or key == "s":
         #load skill menu
         #print skill menu
-        Skills.PrintSkills()
+        SkillPoints.PrintSkills()
         
 
     if key == "E" or key == "e":

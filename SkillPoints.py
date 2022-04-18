@@ -1,7 +1,6 @@
 from os import system, name
 from os.path import exists
 import os
-
 import GameFunctions as Game
 
 #Initialize skill variables (If there is no save file then this is a new game, use these values)
