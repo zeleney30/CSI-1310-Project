@@ -15,7 +15,7 @@ enemies = [["Grunt", 10, 2], ["Goblin", 15, 5], ["Zombie", 22, 9], ["Skeleton", 
 enemy = "Grunt" #only working enemy at this time -> makes it simpler for presentation purposes
 
 
-dunOptions = {'1': 'Fight', '2': 'Use Consumable', '3': 'Flee'}
+dunOptions = {'1': 'Fight', '2': 'Flee'}#, '3': 'Use Consumable'}
 enemyhp = 10
 enemydmg = 2
 
@@ -33,23 +33,24 @@ def GenerateEnemy():
             Player.hp = Player.hp - enemydmg
             enemyhp = enemyhp - Player.dmg
             if enemyhp <= 0:
-                print("You win!")
+                print("You win! Gained 10 xp from this fight.")
                 Player.xp = Player.xp + 10
+                break
             elif Player.hp <= 0:
-                print("You lose!")
-            else:
+                Player.xp = Player.xp + 2
+                print("You lose! Gained 2 xp from this fight.")
                 break
 
 
 
     elif key == '2':
-    #let player use a consumable
-        print("Use consumable.")
-
-    elif key == '3':
     #let the player flee from the battle, gaining no experience 
         print("Flee!")
         Game.PrintMenu()
+
+    elif key == '3':
+    #let player use a consumable
+        print("Use consumable.")
 
 
     else:
