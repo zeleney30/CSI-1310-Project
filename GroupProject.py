@@ -11,8 +11,7 @@ class popupWindow(EasyFrame):
 def main():
     popupWindow().mainloop()
 
-if __name__ == "__main__":
-    main()
+main()
 
 
 Skills.Load()

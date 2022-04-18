@@ -221,14 +221,19 @@ def Calc_Dodge():
 def Calc_Level():
     if xp == 50:
         level = level + 1
+        dmg = dmg + 5
     elif xp == 100:
         level = level + 2
+        dmg = dmg + 10
     elif xp == 200:
         level = level + 3
+        dmg = dmg + 15
     elif xp == 300:
         level = level + 4
+        dmg = dmg + 20
     elif xp == 500:
         level = level + 5
+        dmg = dmg + 25
     elif xp > 500:
         print("Maximum level reached!")
     
