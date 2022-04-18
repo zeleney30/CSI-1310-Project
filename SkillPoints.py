@@ -7,10 +7,6 @@ import GameFunctions as Game
 sp = 5
 skills = [["1 - Strength: ", 0], ["2 - Dexterity: ", 0], ["3 - Intelligence: ", 0], ["4 - Agility: ", 0], ["5 - Stamina: ", 0]]
 
-def playerSkills():
-    print(skills, "Skills")
-    print(sp, "Your remaining skill points: ")
-
 def getSP():
     return sp
 
@@ -22,6 +18,8 @@ def CreateSaveFile():
     if not exists("Skills.txt"):
         file = open("Skills.txt", "x")
         file.close()
+
+CreateSaveFile()
 
 #Save skills
 def Save():

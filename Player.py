@@ -35,6 +35,8 @@ def CreateSaveFile():
         file = open("Inventory.txt", "x")
         file.close()
 
+CreateSaveFile()
+
 #Save trader
 def Save():
     file = open("Inventory.txt", "w")
