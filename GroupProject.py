@@ -1,5 +1,6 @@
 import GameFunctions as Game
 import Player as Player
+import SkillPoints as Skills
 
 
 
@@ -32,7 +33,7 @@ import Player as Player
 # END TRADER #
 
 
-
+#Skills.Load()
 # GAME LOGIC #
 Game.PrintMenu()
 

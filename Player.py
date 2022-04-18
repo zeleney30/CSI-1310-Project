@@ -74,8 +74,6 @@ def Load():
         if not line:
             break
 
-        print(line)
-
         if i == 1:
             weapon = line.strip()
         if i == 2:
@@ -91,7 +89,7 @@ def Load():
 
     file.close()
 
-
+Load()
 
 def PrintInventory():
     print("Equipped:")

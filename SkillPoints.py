@@ -77,6 +77,8 @@ def Load():
 
     skills = list3     
 
+Load()
+
 #Print skills
 def PrintSkills():
     Game.ClearTerminal()
