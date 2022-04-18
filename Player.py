@@ -1,3 +1,4 @@
+import os
 import SkillPoints as Skills
 import GameFunctions as Game
 
@@ -14,7 +15,7 @@ dc = 0.05
 #need to implement max level
 #max level = 25
 
-gp = 100000
+gp = 100
 
 #holds items and consumables
 inventory = []
@@ -29,7 +30,7 @@ pants = ""
 
 #Create the save file if it doesnt already exist
 def CreateSaveFile():
-    if not exists("Inventory.txt"):
+    if not FileExistsError("Inventory.txt"):
         file = open("Inventory.txt", "x")
         file.close()
 

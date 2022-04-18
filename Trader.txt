@@ -1,10 +1,10 @@
-Tin Gauntlet
-Steel Chestplate
+Tin Pants
+Tin Helmet
 Copper Sword
-Copper Gauntlet
+Steel Helmet
 Steel Sword
 Tin Chestplate
+Copper Sword
+Tin Gauntlet
 Steel Sword
-Steel Sword
-Steel Helmet
-Copper Chestplate
+Tin Pants
