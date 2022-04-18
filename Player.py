@@ -202,18 +202,18 @@ def setGP(x):
 
 
 
-def Calc_Health():
+'''def Calc_Health():
     global hp
-    hp = hp + (Skills[0][1] * 2)
+    hp = hp + (Skills.skills[0][1] * 2)
 
 def Calc_Mana():
     global mana
-    mana = mana + (Skills[2][1] * 2)
+    mana = mana + (Skills.skills[2][1] * 2)
 
 def Calc_HitChance():
     global hc
-    hc = hc + (Skills[1][1] / 100)
+    hc = hc + (Skills.skills[1][1] / 100)
 
 def Calc_Dodge():
     global dc
-    dc = dc + (Skills[3][1] / 100)
+    dc = dc + (Skills.skills[3][1] / 100)'''
