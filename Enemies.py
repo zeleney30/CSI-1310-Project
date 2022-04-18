@@ -175,8 +175,7 @@ def GenerateEnemy():
                     Player.getGP
                     Player.gp = Player.gp + 5
                     print("You lose! Gained 10 xp and 5 gold from this fight.")
-                    break
-
+                    break      
 
     #player flees -> allows them to go back and do other things from the main menu
     elif key == '2':
