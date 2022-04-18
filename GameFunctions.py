@@ -12,11 +12,11 @@ def ClearTerminal():
     else:
         _ = system("clear")
 
-menu={'A': '- Continue Game', 'B': '- New Game', 'C':'- Save Game', 'D':'- Quit Game'} #open automatically on game startup --> change to ONLY on startup or when asked for
+menu={'A': '- Continue Game', 'B':'- Quit Game'} #open automatically on game startup --> change to ONLY on startup or when asked for
 
 
 def PrintMenu():
-    if selection == 'A' or selection == 'a' or selection == 'B' or selection == 'b': #main menu for game, can be opened at tny time
+    if selection == 'A' or selection == 'a': #main menu for game, can be opened at tny time
         print("Enter 'S' to view your skill points")
         print("Enter 'T' to talk to the trader")
         print("Enter 'I' to view your inventory")
@@ -40,23 +40,10 @@ while True:
         PrintMenu()
         
     elif selection == 'B' or selection == 'b':
-        #start new game
-        f = open("Pythongame.txt", 'w+')
-        f.truncate()
-        f.close()
-        print("Starting new game...")
-        PrintMenu()
-        
-    elif selection == 'C' or selection == 'c':
-        #save the game
-        print("Saving game...")
-        break
-        
-    elif selection == 'D' or selection == 'd':
         #close the game -- autosave before closing
         print("Closing game...")
         quit()
-
+   
     else:
         print("Please select a valid option.")
         #open the menu again so they can choose a valid option

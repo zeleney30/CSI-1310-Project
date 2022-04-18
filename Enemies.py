@@ -50,26 +50,44 @@ for enemies[4] in enemies:
 def GenerateEnemy():
     if Player.dmg < 5:
         enemy == enemies[0]
+        enemyName = "Grunt"
+        enemyhp = 10
+        enemydmg = 2
         print("A " + enemyName + " appeared!")
         print(dunOptions)
     elif Player.dmg > 5 and Player.dmg < 10:
         enemy == enemies[1]
+        enemyName = "Goblin"
+        enemyhp = 25
+        enemydmg = 5
         print("A " + enemyName + " appeared!")
         print(dunOptions)
     elif Player.dmg > 10 and Player.dmg < 15:
         enemy == enemies[2]
+        enemyName = "Zombie"
+        enemyhp = 40
+        enemydmg = 9
         print("A " + enemyName + " appeared!")
         print(dunOptions)
     elif Player.dmg > 15 and Player.dmg < 20:
         enemy == enemies[3]
+        enemyName = "Skeleton"
+        enemyhp = 55
+        enemydmg = 12
         print("A " + enemyName + " appeared!")
         print(dunOptions)
     elif Player.dmg > 20:
         enemy == enemies[4]
+        enemyName = "Wizard"
+        enemyhp = 70
+        enemydmg = 19
         print("A " + enemyName + " appeared!")
         print(dunOptions)
     else: 
         enemy == enemies[0]
+        enemyName = "Grunt"
+        enemyhp = 10
+        enemydmg = 2
         print("A " + enemyName + " appeared!")
         print(dunOptions)
 

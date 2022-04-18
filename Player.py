@@ -202,7 +202,7 @@ def setGP(x):
 
 
 
-'''def Calc_Health():
+def Calc_Health():
     global hp
     hp = hp + (Skills.skills[0][1] * 2)
 
@@ -216,4 +216,19 @@ def Calc_HitChance():
 
 def Calc_Dodge():
     global dc
-    dc = dc + (Skills.skills[3][1] / 100)'''
+    dc = dc + (Skills.skills[3][1] / 100)
+
+def Calc_Level():
+    if xp == 50:
+        level = level + 1
+    elif xp == 100:
+        level = level + 2
+    elif xp == 200:
+        level = level + 3
+    elif xp == 300:
+        level = level + 4
+    elif xp == 500:
+        level = level + 5
+    elif xp > 500:
+        print("Maximum level reached!")
+    
